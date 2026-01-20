@@ -9,6 +9,7 @@ st.set_page_config(page_title="Language Detection App", page_icon="🌍", layout
 
 # Load Model & Tokenize
 
+@st.cache_resource(show_spinner="Loading model...")
 def load_artifacts():
     model = load_model(
     "saved_model/simple_rnn_model.keras",
