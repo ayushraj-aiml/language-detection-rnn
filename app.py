@@ -8,9 +8,12 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 st.set_page_config(page_title="Language Detection App", page_icon="🌍", layout="centered")
 
 # Load Model & Tokenize
-@st.cache_resource
+
 def load_artifacts():
-    model = load_model("saved_model/simple_rnn_model.keras")
+    model = load_model(
+    "saved_model/simple_rnn_model.keras",
+    compile=False
+)
     with open("saved_model/tokenizer.pkl", "rb") as f:
         tokenizer, label_encoder = pickle.load(f)
     return model, tokenizer, label_encoder
